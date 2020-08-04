@@ -1,0 +1,3 @@
+http://api.moreover.com/ping?u=http://p.test1.ru/sitemap.xml
+http://www.submissions.ask.com/ping?sitemap=http://p.test1.ru/sitemap.xml
+http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=YahooDemo&url=http://p.test1.ru/sitemap.xml

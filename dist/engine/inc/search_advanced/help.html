@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<meta charset="utf-8">
+  <style type="text/css">
+	a:active,a:visited,a:link {color: #446488; text-decoration: none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt;}
+	a:hover {color: #00004F; text-decoration: none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; }
+	.code {
+		font-family : Verdana, Courier;
+		font-size : 11px;
+		border: 1px solid #BBCDDB;
+		margin:10px;
+		padding:4px;
+		background:#FBFFFF;
+	}
+    h1 {
+		background-color : #C4BFB9;
+		border : #000000 1px solid;
+
+		color : #6B6256;
+		font-family : Tahoma, Verdana, Arial, Helvetica, sans-serif;
+		font-size : 11px;
+		font-weight : bold;
+		padding:4px;
+		text-decoration : none;
+	}
+	BODY, TD, TR {text-align:justify ;padding: 0; leftMargin: 0; topMargin: 0; text-decoration: none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; cursor: default;}
+	</style>
+<title>Помощь по настройке шаблонов модуля SearchAdvanced</title>
+<body>
+
+<div style="padding-right:5px">
+
+<table width="100%">
+	<tr>
+		<td bgcolor="#EFEFEF" height="29" style="padding-left:10px;"><div class="navigation">Шаблон формы поиска</div></td>
+  </tr>
+</table>
+В этом шаблоне можно сделать абсолютно любую форму поиска, с помощью любого скрипта(например, JQuery), который будет отправлять POST данные введенного запроса по адресу http://site.ru/engine/ajax/search_advanced.php .<br>
+Для полного понимания Вы можете ознакомиться с уже имеющимися формой поиска и скрипта к ней, которая позволяет отыскать нужный материал с помощью технологии AJAX.
+<br>
+<table width="100%" style="margin:25px 0 0;">
+	<tr>
+		<td bgcolor="#EFEFEF" height="29" style="padding-left:10px;"><div class="navigation">Шаблон ссылок для выдачи</div></td>
+  </tr>
+</table>
+<br>
+<b>Присутствующие теги:</b>
+<ul>
+	<li>[not-recomend] и [/not-recomend]</li>
+	<li>[recomend] и [/recomend]</li>
+</ul><br>
+Теги [not-recomend] и [/not-recomend] позволяют создать свое окружение по оформлению и расположениею элементов отдельно от [recomend] и [/recomend]. В каждом из них может быть разный дизайн и подход.<br><br>
+<ul>
+	<li>В тегах [not-recomend] и [/not-recomend] контент выводится только тогда, когда пользователь без каких либо лишних движений получает свой фильм или несколько частей фильма.</li>
+	<li>А в тегах [recomend] и [/recomend] выводится контент только когда поиск ничего не находит, при этом функция «Рекомендаций» должна быть включена в админпанеле настроек.</li>
+</ul><br>
+Внутри этих тегов работают следующие вспомогательные теги:<br>
+<b>{link}</b> — Ссылка на полную новость в чистом виде(http://site.ru/id-news.html), вид ссылки зависит от настроек ЧПУ.<br>
+<b>{title}</b> — Название для новости.<br><br>
+<b>{category}</b> — Выводит категорию в которой состоит новость.<br><br>
+<b>[image-X] {image-X} [/image-X]</b> — Выводит нужное(Порядковый номер X в новости) изображение из краткой новости, если там нет ищет в полной.<br><br>
+<b>{full-story limit="150"}</b> — Выводит(описание полной новости) указанное в кавычках количество символов, можно выводить полное описание если убрать limit="X".<br><br>
+<b>{short-story limit="150"}</b> — Выводит(описание краткой новости) указанное в кавычках количество символов, можно выводить полное описание если убрать limit="X".<br><br>
+<b>Основной и вспомогательный тег:</b><br>
+<b>{title-orig}</b> — Выводит оригинальное название.<br>
+<b>[title-orig] и [/title-orig]</b> — Эти теги могут понадобиться, чтобы убрать лишнее в том случае когда оригинального названия нет(касается русских фильмов). Например у Вас есть фильм 30 свиданий, это и есть оригинальное название, второго быть не может.<br>
+Поэтому если вы выводите ссылки на новости например: Боги Египта (2016)[title-orig] / Gods of Egypt[/title-orig], то в случае когда оригинального названия нет, слэш «/» между названиями будет так же вырезан.<br>
+
+<br>
+<table width="100%" style="margin:25px 0 0;">
+	<tr>
+		<td bgcolor="#EFEFEF" height="29" style="padding-left:10px;"><div class="navigation">Шаблон информационных сообщений</div></td>
+  </tr>
+</table>
+В этом шаблоне настраивается вывод ошибок и уведомлений.<br><b>Доступные такие теги как:</b>
+<ul>
+	<li>[you-mean] и [/you-mean]</li>
+	<li>[not-found] и [/not-found]</li>
+	<li>[recomendation] и [/recomendation]</li>
+</ul><br>
+
+Все, что между тегов [you-mean] и [/you-mean] выводится тогда, когда пользователь мог допустить ошибку в каком либо слове. То есть между тегов можно написать: «Ой, кажется вы допустили ошибку, наверно вы имелли ввиду эти фильмы:», и ниже ссылки на них, которые формируются из шаблона «Ссылок для выдачи».<br>
+<br>Соответственно теги [not-found] и [/not-found] выводят информацию внутри, когда поиск ничего не находит и при этом отключена опция «Рекомендации».
+<br><br>
+Теги [recomendation] и [/recomendation] выведут все, что внутри, когда поиск ничего не находит и в настройках модуля включена опция «Рекомендации».
+
+<br><br>P.S. Пользуясь такими возможностями вы можете указывать ссылку на стол заказов например если поиск ничего не находит на вашем сайте. Или как бы это подло небыло встраивать рекламные ссылки. В общем как душе угодно :)
+
+</div>
+
+</body>
+</html>
